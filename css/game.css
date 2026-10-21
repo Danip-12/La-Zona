@@ -228,3 +228,54 @@
 }
 @media (min-width: 720px) { .screen { padding-top: 32px; } .section-title { font-size: 2.2rem; } }
 @media (max-width: 359px) { .brand__name { font-size: 1.3rem; } .section-title { font-size: 1.6rem; } .btn { padding: 0 14px; } }
+
+/* ---------- ordenador: partida a pantalla grande ----------
+ * Tres columnas simétricas: marcador | ruleta | resultado. La columna central queda en el centro
+ * exacto de la ventana (las laterales son 1fr iguales) y la ruleta ocupa toda la altura libre.
+ * .stage pasa a display: contents para que título, ruleta, extremos y veredicto se coloquen en la rejilla. */
+@media (min-width: 960px) and (min-height: 521px) {
+  .screen--game {
+    /* --rest = altura que ocupan cabecera, título, extremos y botones (peor caso); el resto es de la ruleta. */
+    --rest: 372px; --side-min: 220px; --gap-x: 40px;
+    --dial-w: max(360px, min(calc((100dvh - var(--rest)) * 1.435), 1240px, calc(100vw - 2 * var(--side-min) - 2 * var(--gap-x) - 80px)));
+    max-width: 1800px; padding: calc(14px + var(--safe-t)) 40px calc(22px + var(--safe-b));
+    display: grid; gap: 0 var(--gap-x); align-content: stretch;
+    grid-template-columns: minmax(0, 1fr) minmax(0, var(--dial-w)) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto auto auto auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "bar   bar   bar"
+      ".     .     ."
+      "score title ."
+      "score sub   ."
+      "score dial  verd"
+      "score ends  leg"
+      "score act   ."
+      ".     .     .";
+  }
+  .gamebar { grid-area: bar; margin-bottom: 8px; }
+  .gamebar__name { font-size: 1.1rem; }
+  .stage { display: contents; }
+  .stage__title { grid-area: title; font-size: clamp(1.9rem, 2.8vw, 2.6rem); text-align: center; }
+  .stage__sub { grid-area: sub; margin-top: 4px; font-size: 1.15rem; text-align: center; }
+  .dial { grid-area: dial; max-width: none; min-width: 0; margin-top: 10px; }
+  .stage .ends { grid-area: ends; margin-top: 6px; }
+  .end { font-size: clamp(1.15rem, 1.7vw, 1.55rem); }
+  .verdict { grid-area: verd; align-self: end; text-align: center; margin: 0; }
+  .verdict__main { font-size: clamp(1.7rem, 2.3vw, 2.4rem); } .verdict__sub { font-size: 1.1rem; }
+  .legend { grid-area: leg; align-self: start; max-width: none; text-align: center; margin-top: 10px; font-size: .95rem; }
+  .scoreboard { grid-area: score; align-self: start; justify-self: start; width: 100%; max-width: 340px; }
+  .screen--game .scoreboard, .screen--game .scoreboard[data-count] { grid-template-columns: 1fr; }
+  .screen--game .scoreboard[data-count="5"], .screen--game .scoreboard[data-count="6"],
+  .screen--game .scoreboard[data-count="7"], .screen--game .scoreboard[data-count="8"] { grid-template-columns: 1fr 1fr; max-width: 360px; }
+  .score { padding: 12px 16px; }
+  .score__pts { font-size: 2.3rem; }
+  .scoreboard[data-count="5"] .score, .scoreboard[data-count="6"] .score, .scoreboard[data-count="7"] .score, .scoreboard[data-count="8"] .score { padding: 10px 11px; column-gap: 4px; }
+  .scoreboard[data-count="5"] .score__pts, .scoreboard[data-count="6"] .score__pts, .scoreboard[data-count="7"] .score__pts, .scoreboard[data-count="8"] .score__pts { font-size: 1.7rem; }
+  .actions { grid-area: act; justify-self: center; width: min(100%, 520px); margin-top: 16px; gap: 10px; min-height: 118px; } /* altura fija: la ruleta no se mueve entre fases */
+  .hint { font-size: .95rem; }
+  .sheet { max-width: 640px; }
+}
+@media (min-width: 960px) and (max-width: 1199px) and (min-height: 521px) {
+  .screen--game { --side-min: 190px; --gap-x: 24px; padding-left: 28px; padding-right: 28px; }
+  .score { padding: 10px 12px; } .score__pts { font-size: 2rem; }
+}
