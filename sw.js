@@ -3,7 +3,7 @@
  * - Estrategia red‑primero con respaldo de caché para recursos propios.
  * - Caché versionada: al cambiar VERSION se crea una nueva y se borran las antiguas.
  * Si añades o quitas archivos, actualiza PRECACHE (tests/pwa.test.js lo comprueba). */
-const VERSION = 'lazona-v9';
+const VERSION = 'lazona-v11';
 const PRECACHE = [
   './', 'index.html', 'manifest.json',
   'css/styles.css', 'css/game.css',
