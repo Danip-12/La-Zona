@@ -1,0 +1,7 @@
+:root{color-scheme:light dark;--bg:#E8ECF5;--ink:#0D1226;--ink2:#4A5273;--link:#3B45D6}
+@media (prefers-color-scheme:dark){:root{--bg:#0D1226;--ink:#EAEEFB;--ink2:#A9B2D3;--link:#8E95FF}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 "Avenir Next","Segoe UI",system-ui,sans-serif}
+main{max-width:68ch;margin:0 auto;padding:24px 20px 56px}
+h1{font-size:1.8rem;letter-spacing:-.02em;margin:.4em 0}h2{font-size:1.15rem;margin:1.6em 0 .3em}
+p,li{color:var(--ink)}.meta{color:var(--ink2);font-size:.9rem}a{color:var(--link)}
+.box{padding:12px 14px;border-radius:12px;border:2px dashed var(--ink2);margin:16px 0;font-size:.92rem}

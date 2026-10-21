@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- CSP estricta: solo recursos propios, sin scripts ni estilos en línea. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>LA ZONA — juego de adivinar para jugar en un móvil</title>
+  <meta name="description" content="Da una pista y que adivinen dónde cae. Juego de precisión para 2 a 8 jugadores con un solo móvil. Sin cuentas, sin conexión.">
+  <meta name="theme-color" content="#E8ECF5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#060914" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="La Zona">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/game.css">
+  <!-- Aplica tema y movimiento ANTES del primer pintado (script síncrono y externo por la CSP). -->
+  <script src="js/theme-boot.js"></script>
+</head>
+<body>
+  <div id="app" class="app" aria-busy="true"></div>
+  <!-- Región viva global para anuncios (marcador, veredicto). -->
+  <div id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+  <noscript><p class="noscript">LA ZONA necesita JavaScript para funcionar.</p></noscript>
+  <!-- Script clásico (no módulo) para que funcione abriendo index.html con doble clic. Fuente: js/ → npm run bundle -->
+  <script src="app.js" defer></script>
+</body>
+</html>
