@@ -2434,7 +2434,7 @@
   var freshForm = () => ({
     players: ["", ""],
     mode: "packs",
-    packs: new Set(listPacks().map((p) => p.id)),
+    packs: /* @__PURE__ */ new Set(),
     left: "",
     right: ""
   });
