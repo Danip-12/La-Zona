@@ -14,7 +14,7 @@ import { openStore } from './store.js';
 let form = null;
 export const resetHomeForm = () => { form = null; };
 const freshForm = () => ({
-  players: ['', ''], mode: 'packs', packs: new Set(listPacks().map((p) => p.id)), left: '', right: '',
+  players: ['', ''], mode: 'packs', packs: new Set(), left: '', right: '',
 });
 
 /** Marca: medio dial con las tres franjas de puntuación. */
